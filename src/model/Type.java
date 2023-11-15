@@ -1,2 +1,7 @@
-package model;public enum Type {
+package model;
+
+public enum Type {
+    MOB,
+    HOME,
+    FAX
 }
