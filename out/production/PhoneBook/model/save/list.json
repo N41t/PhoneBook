@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "name": "Jack",
+    "surname": "Jonson",
+    "fatherName": "Robert",
+    "phone": "+734234234",
+    "birthday": "23.07.1996",
+    "age": 0,
+    "gender": "MALE",
+    "type": "MOB"
+  },
+  {
+    "id": 2,
+    "name": "Jill",
+    "surname": "Timber",
+    "fatherName": "Felix",
+    "phone": "+792134124",
+    "birthday": "24.03.1976",
+    "age": 0,
+    "gender": "FEMALE",
+    "type": "HOME"
+  }
+]

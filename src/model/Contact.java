@@ -1,6 +1,8 @@
 package model;
 
 
+import java.util.Date;
+
 public class Contact {
 
     private long id;
@@ -11,6 +13,8 @@ public class Contact {
 
 
     private String birthday;
+
+
 
 
     private int age;
@@ -102,6 +106,8 @@ public class Contact {
 ////        System.out.println(contact2.getId());
 //
 //
+//
+//
 //    }
 
 
@@ -119,6 +125,7 @@ public class Contact {
                 ", type=" + type +
                 '}';
     }
+
 }
 
 class CountId {
