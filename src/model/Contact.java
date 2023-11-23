@@ -29,6 +29,7 @@ public class Contact {
         id = CountId.addCountId();
     }
 
+
     public long getId() {
         return id;
     }
@@ -97,33 +98,24 @@ public class Contact {
         this.type = type;
     }
 
-//    public static void main(String[] args) {
-////        System.out.println("Проверка на то, что при создании объекта будет увеличиваться id");
-////        Contact contact1 = new Contact();
-////        Contact contact2 = new Contact();
-////
-////        System.out.println(contact1.getId());
-////        System.out.println(contact2.getId());
-//
-//
-//
-//
-//    }
-
 
     @Override
     public String toString() {
-        return "Contact{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", fatherName='" + fatherName + '\'' +
-                ", phone='" + phone + '\'' +
-                ", birthday='" + birthday + '\'' +
-                ", age=" + age +
-                ", gender=" + gender +
-                ", type=" + type +
-                '}';
+        return "\nContact: \n" +
+                "id: " + id +
+                "\nSurname: " + surname +
+                "\nName: " + name +
+                "\nFatherName: " + fatherName +
+                "\nType of number: " + type +
+                "\nNumber: " + phone +
+                "\nDate birthday: " + birthday +
+                "\nAge: " + age +
+                "\nGender: " + gender;
+
+    }
+
+    public String shortToString() {
+        return "id: " + id + " - " + surname + " " + name;
     }
 
 }

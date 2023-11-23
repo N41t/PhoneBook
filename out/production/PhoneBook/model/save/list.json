@@ -1,23 +1,21 @@
 [
   {
     "id": 1,
-    "name": "Jack",
-    "surname": "Jonson",
-    "fatherName": "Robert",
-    "phone": "+734234234",
-    "birthday": "23.07.1996",
-    "age": 0,
+    "name": "Георгий",
+    "surname": "Белозеров",
+    "phone": "8-913-360-53-97",
+    "birthday": "04-12-1973",
+    "age": 49,
     "gender": "MALE",
     "type": "MOB"
   },
   {
     "id": 2,
-    "name": "Jill",
-    "surname": "Timber",
-    "fatherName": "Felix",
-    "phone": "+792134124",
-    "birthday": "24.03.1976",
-    "age": 0,
+    "name": "Светлана",
+    "surname": "Белозерова",
+    "phone": "40-50-99",
+    "birthday": "11-10-1976",
+    "age": 47,
     "gender": "FEMALE",
     "type": "HOME"
   }

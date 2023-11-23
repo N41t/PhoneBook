@@ -20,22 +20,21 @@ public class Util {
     public static String validateDate() throws ParseException {
 
         while (true) {
-            System.out.print("Введите дату в формате (dd-mm-yyyy). Минимальный год 1900, Максимальный 2022" +
-                    "         \nВвод: ");
+            System.out.print("Input the date in the format (dd-mm-yyyy). Min year 1900, Max year 2022" +
+                    "         \nInput: ");
             String dateInput = scanner.next();
 
             Pattern pattern = Pattern.compile("(([0-2][1-9])|(3[0-1]))(-|/)(([0][1-9])|([1][0-2]))(-|/)(([1][9][0-9][0-9])|([2][0][0-2][0-2]))");
 
             Matcher matcher = pattern.matcher(dateInput);
 
-            boolean answer = matcher.matches(); //выдает true или false
+            boolean answer = matcher.matches();
 
             if (answer == true) {
-                System.out.println("Дата задана");
                 return dateInput;
 
             } else {
-                System.out.println("Дата введена не корректно");
+                System.out.println("Date inputted incorrectly");
             }
 
 
@@ -65,33 +64,30 @@ public class Util {
 
             if (contact.getType() == Type.MOB) {
                 pattern = Pattern.compile("(\\+7|8)-\\d{3}-\\d{3}-\\d{2}-\\d{2}");
-                System.out.print("Введите телефон в формате 8-ххх-ххх-хх-хх или +7-xxx-xxx-xx-xx." +
-                        "         \nВвод: ");
+                System.out.print("Input the mobile number in format 8-ххх-ххх-хх-хх or +7-xxx-xxx-xx-xx." +
+                        "         \nInput: ");
             } else if (contact.getType() == Type.HOME) {
                 pattern = Pattern.compile("\\d{2}-\\d{2}-\\d{2}");
-                System.out.print("Введите домашний телефон в формате xx-xx-xx." +
+                System.out.print("Input the home number in format xx-xx-xx." +
                         "         \nВвод: ");
             } else {
                 pattern = Pattern.compile("\\d-\\d{3}-\\d{7}");
-                System.out.print("Введите факс в формате x-xxx-xxxxxxx." +
+                System.out.print("Input the fax number in format x-xxx-xxxxxxx." +
                         "         \nВвод: ");
             }
 
 
             String phoneNumberInput = scanner.next();
 
-            //Pattern pattern = Pattern.compile("(\\+7|8)-\\d{3}-\\d{3}-\\d{2}-\\d{2}");
-
             Matcher matcher = pattern.matcher(phoneNumberInput);
 
-            boolean answer = matcher.matches(); //выдает true или false
+            boolean answer = matcher.matches();
 
             if (answer == true) {
-                System.out.println("Номер задан");
                 return phoneNumberInput;
 
             } else {
-                System.out.println("Номер введен не корректно");
+                System.out.println("Number inputted incorrectly");
             }
         }
 
