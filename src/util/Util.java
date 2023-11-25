@@ -8,10 +8,13 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Util {
 
@@ -22,20 +25,28 @@ public class Util {
         while (true) {
             System.out.print("Input the date in the format (dd-mm-yyyy). Min year 1900, Max year 2022" +
                     "         \nInput: ");
+
+
             String dateInput = scanner.next();
 
-            Pattern pattern = Pattern.compile("(([0-2][1-9])|(3[0-1]))(-|/)(([0][1-9])|([1][0-2]))(-|/)(([1][9][0-9][0-9])|([2][0][0-2][0-2]))");
-
-            Matcher matcher = pattern.matcher(dateInput);
-
-            boolean answer = matcher.matches();
-
-            if (answer == true) {
-                return dateInput;
-
+            if (dateInput.equals("#")) {
+                return "#";
             } else {
-                System.out.println("Date inputted incorrectly");
+                Pattern pattern = Pattern.compile("(([0-2][1-9])|(3[0-1]))(-|/)(([0][1-9])|([1][0-2]))(-|/)(([1][9][0-9][0-9])|([2][0][0-2][0-2]))");
+
+                Matcher matcher = pattern.matcher(dateInput);
+
+                boolean answer = matcher.matches();
+
+                if (answer == true) {
+                    return dateInput;
+
+                } else {
+                    System.out.println("Date inputted incorrectly");
+                }
             }
+
+
 
 
         }
@@ -90,6 +101,37 @@ public class Util {
                 System.out.println("Number inputted incorrectly");
             }
         }
+
+    }
+
+    public static void search(ArrayList<Contact> contactList) {
+
+
+        while (true) {
+            System.out.println("(Input # - if you want to skip)\nInput the search name: ");
+            String value = scanner.next();
+
+            if (value.equals("#")) {
+                break;
+            } else {
+                List<Contact> newContactList = contactList.stream().filter(n->n.getName().toLowerCase().startsWith(value)).collect(Collectors.toList());
+                for (Contact contact : newContactList) {
+                    System.out.println(contact.shortToString() + "\n");
+                    System.out.println("Continue searching? 1 - Yes, 2 - No");
+                    String answer = scanner.next();
+                    if (answer.equals("1")) {
+
+                    } else if (answer.equals("2")) {
+                        break;
+                    } else {
+                        System.out.println("Wrong input, repeat again!");
+                    }
+
+                }
+            }
+        }
+
+
 
     }
 }

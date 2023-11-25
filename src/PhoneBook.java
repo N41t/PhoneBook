@@ -80,15 +80,17 @@ public class PhoneBook {
         }
 
 
-        System.out.print("Input date of birthday: ");
+        System.out.print("(Input # - if you want to skip)\nInput date of birthday: ");
         String inputBirthday = Util.validateDate();
         if (inputBirthday.equals("#")) {
             contact.setBirthday(null);
+            contact.setAge(0);
         } else {
             contact.setBirthday(inputBirthday);
+            contact.setAge(Util.calculateBirthday(inputBirthday));
         }
 
-        contact.setAge(Util.calculateBirthday(inputBirthday));
+
 
         while (true) {
             System.out.println("Input phone number type: ");
@@ -97,14 +99,14 @@ public class PhoneBook {
                     "3 - fax");
 
             System.out.print("Input: ");
-            int input = scanner.nextInt();
-            if (input == 1) {
+            String input = scanner.next();
+            if (input.equals("1")) {
                 contact.setType(Type.MOB);
                 break;
-            } else if (input == 2) {
+            } else if (input.equals("2")) {
                 contact.setType(Type.HOME);
                 break;
-            } else if (input == 3) {
+            } else if (input.equals("3")) {
                 contact.setType(Type.FAX);
                 break;
             } else {
@@ -148,9 +150,22 @@ public class PhoneBook {
 
     public static void updateContact() throws ParseException {
 
-        for (Contact value : contactList) {
-            System.out.println(value.shortToString() + "\n");
+        while (true) {
+            System.out.println("Search or show all contacts? 1 - Search, 2 - Show All Contact, 3 - Exit");
+            String answer = scanner.next();
+            if (answer.equals("1")) {
+                Util.search(contactList);
+            } else if (answer.equals("2")) {
+                for (Contact value : contactList) {
+                    System.out.println(value.shortToString() + "\n");
+                }
+            } else if (answer.equals("3")) {
+                break;
+            } else {
+                System.out.println("Wrong input, repeat again!");
+            }
         }
+
 
         while (true) {
             System.out.print("Input the id number to update contact: ");
@@ -168,57 +183,76 @@ public class PhoneBook {
 
                 }
             } else if (contactList.contains(contactList.get(count))) {
-                System.out.print("Input new name: ");
+                System.out.print("(Input # - if you want to skip)\nInput new name: ");
                 String nameContact = scanner.next();
-                contactList.get(count).setName(nameContact);
+                if (nameContact.equals("#")) {
 
-                System.out.print("Input new surname: ");
+                } else {
+                    contactList.get(count).setName(nameContact);
+                }
+
+
+                System.out.print("(Input # - if you want to skip)\nInput new surname: ");
                 String surnameContact = scanner.next();
-                contactList.get(count).setSurname(surnameContact);
+                if (surnameContact.equals("#")) {
+
+                } else {
+                    contactList.get(count).setSurname(surnameContact);
+                }
+
 
                 System.out.print("(Input # - if you want to skip)\nInput new fathername: ");
                 String fathernameContact = scanner.next();
                 if (fathernameContact.equals("#")) {
-                    contactList.get(count).setFatherName(null);
+
                 } else {
                     contactList.get(count).setFatherName(fathernameContact);
                 }
 
 
-                System.out.print("Input date of birthday: ");
+                System.out.print("(Input # - if you want to skip)Input date of birthday: ");
+
                 String inputBirthday = Util.validateDate();
+
                 if (inputBirthday.equals("#")) {
-                    contactList.get(count).setBirthday(null);
+
                 } else {
                     contactList.get(count).setBirthday(inputBirthday);
+                    contactList.get(count).setAge(Util.calculateBirthday(inputBirthday));
                 }
 
-                contactList.get(count).setAge(Util.calculateBirthday(inputBirthday));
 
                 while (true) {
-                    System.out.println("Input phone number type: ");
+                    System.out.println("(Input # - if you want to skip)\nInput phone number type: ");
                     System.out.println("1 - mobile \n" +
                             "2 - home \n" +
                             "3 - fax");
 
-                    System.out.print("Input: ");
-                    int input = scanner.nextInt();
-                    if (input == 1) {
-                        contactList.get(count).setType(Type.MOB);
-                        break;
-                    } else if (input == 2) {
-                        contactList.get(count).setType(Type.HOME);
-                        break;
-                    } else if (input == 3) {
-                        contactList.get(count).setType(Type.FAX);
+                    if (surnameContact.equals("#")) {
                         break;
                     } else {
-                        System.out.println("Wrong input, repeat again!");
+                        System.out.print("Input: ");
+                        int input = scanner.nextInt();
+                        if (input == 1) {
+                            contactList.get(count).setType(Type.MOB);
+                            break;
+                        } else if (input == 2) {
+                            contactList.get(count).setType(Type.HOME);
+                            break;
+                        } else if (input == 3) {
+                            contactList.get(count).setType(Type.FAX);
+                            break;
+                        } else {
+                            System.out.println("Wrong input, repeat again!");
+                        }
                     }
+
+
                 }
 
-                System.out.print("Input phone number: ");
+                System.out.print("(Input # - if you want to skip)\nInput phone number: ");
                 String phoneContact = Util.validatePhoneNumber(contactList.get(count));
+
                 contactList.get(count).setPhone(phoneContact);
 
                 while (true) {
@@ -256,9 +290,22 @@ public class PhoneBook {
 
     public static void deleteContact() {
 
-        for (Contact value : contactList) {
-            System.out.println(value.shortToString() + "\n");
+        while (true) {
+            System.out.println("Search or show all contacts? 1 - Search, 2 - Show All Contact, 3 - Exit");
+            String answer = scanner.next();
+            if (answer.equals("1")) {
+                Util.search(contactList);
+            } else if (answer.equals("2")) {
+                for (Contact value : contactList) {
+                    System.out.println(value.shortToString() + "\n");
+                }
+            } else if (answer.equals("3")) {
+                break;
+            } else {
+                System.out.println("Wrong input, repeat again!");
+            }
         }
+
 
         while (true) {
             System.out.print("Input the id number to delete contact: ");
@@ -293,10 +340,50 @@ public class PhoneBook {
         }
 
 
-
-        for (Contact contact : contactList) {
-            System.out.println(contact.toString());
+        while (true) {
+            System.out.println("Search or show all contacts? 1 - Search, 2 - Show All Contact, 3 - Exit");
+            String answer = scanner.next();
+            if (answer.equals("1")) {
+                Util.search(contactList);
+            } else if (answer.equals("2")) {
+                for (Contact value : contactList) {
+                    System.out.println(value.shortToString() + "\n");
+                }
+            } else if (answer.equals("3")) {
+                break;
+            } else {
+                System.out.println("Wrong input, repeat again!");
+            }
         }
+
+
+        while (true) {
+            System.out.println("view detailed information about the contact?");
+            System.out.println("1 - yes, 2 - no");
+            System.out.print("Input: ");
+            String answer = scanner.next();
+            if (answer.equals("1")) {
+                while (true) {
+                    System.out.print("enter contact ID: ");
+                    int idContact = scanner.nextInt();
+                    int count = idContact-1;
+                    if (contactList.contains(contactList.get(count))) {
+                        System.out.println(contactList.get(count).toString() + "\n");
+                        break;
+                    } else {
+                        System.out.println("Contact this id is doesn't exist");
+                    }
+                }
+
+                break;
+            } else if (answer.equals("2")) {
+
+                break;
+            } else {
+                System.out.println("Wrong input, repeat again!");
+            }
+        }
+
 
     }
 
