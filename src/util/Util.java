@@ -8,10 +8,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -133,5 +130,49 @@ public class Util {
 
 
 
+    }
+
+    public static void sort(ArrayList<Contact> contactList) {
+        while (true) {
+            System.out.println("Sort the list? 1 - Yes, 2 - No");
+            String value = scanner.next();
+
+            if (value.equals("1")) {
+                while (true) {
+                    System.out.println("1 - sort ascending, 2 - sort descending");
+                    String value2 = scanner.next();
+                    if (value2.equals("1")) {
+                        List<Contact> sortedListAsc = contactList.stream()
+                                .sorted(Comparator.comparing(Contact::getName))
+                                .collect(Collectors.toList());
+
+                        for (Contact v : sortedListAsc) {
+                            System.out.println(v.shortToString() + "\n");
+                        }
+                        System.out.println("\n");
+                        break;
+                    } else if (value2.equals("2")) {
+                        List<Contact> sortedListDesc = contactList.stream()
+                                .sorted(Comparator.comparing(Contact::getName).reversed())
+                                .collect(Collectors.toList());
+
+
+                        for (Contact v1 : sortedListDesc) {
+                            System.out.println(v1.shortToString() + "\n");
+                        }
+                        System.out.println("\n");
+                        break;
+                    } else {
+                        System.out.println("Wrong input, repeat again!");
+                    }
+                }
+
+                break;
+            } else if (value.equals("2")) {
+                    break;
+            } else {
+                System.out.println("Wrong input, repeat again!");
+            }
+        }
     }
 }

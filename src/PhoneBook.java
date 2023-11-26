@@ -340,6 +340,7 @@ public class PhoneBook {
         }
 
 
+
         while (true) {
             System.out.println("Search or show all contacts? 1 - Search, 2 - Show All Contact, 3 - Exit");
             String answer = scanner.next();
@@ -349,6 +350,7 @@ public class PhoneBook {
                 for (Contact value : contactList) {
                     System.out.println(value.shortToString() + "\n");
                 }
+                Util.sort(contactList);
             } else if (answer.equals("3")) {
                 break;
             } else {
